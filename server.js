@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 cors = require('cors');
 const { Client } = require('pg');
+const bodyParser = require('body-parser');
+
 
 const http = require('http');
 
@@ -10,6 +12,9 @@ const dbaccess = require('./src/db/db-connection');
 const usersRouter = require('./src/routes/main.route');
 
 app.use(cors())
+
+app.use(bodyParser.json()); // application/json 
+
 
 app.use('/', cors(), function (req, res, next) {
 

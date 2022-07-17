@@ -4,7 +4,7 @@ var Products = require('../models/product.model.js');
 
 exports.allapi = function (req, res) {
 
-    console.log(req.body)
+
     if (req.body.moduleType == 'product') {
 
         Products.apiaccess(req.ipInfo, req.body, function (err, task) {

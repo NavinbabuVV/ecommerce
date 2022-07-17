@@ -13,7 +13,8 @@ var Task = function (task) {
 
 Task.apiaccess = function (ip, result, callback) {
 
-
+    var responsedata = {};
+    var resultdatas = {};
     if (result.element_data.action == "product_details") {
 
 
@@ -26,10 +27,9 @@ Task.apiaccess = function (ip, result, callback) {
     } else if (result.element_data.action = "insert_product") {
 
 
-        console.log('insert product');
 
+        var insert_qry = "INSERT INTO products(product_name,product_price,short_desc) values ('" + result.element_data.product_name + "'," + result.element_data.product_price + ",'" + result.element_data.product_desc + "')";
 
-        var insert_qry = "INSERT INTO products(productName,productPrice,shortDesc) values ('" + result.element_data.product_name + "','" + result.element_data.product_price + "')";
 
         var insert_qry_res = SyncFunction(insert_qry);
 
@@ -75,3 +75,5 @@ function SyncFunction(Query) {
     return ret;
 
 }
+
+module.exports = Task;
